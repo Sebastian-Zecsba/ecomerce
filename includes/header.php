@@ -18,6 +18,7 @@
                     <li><a href="#">Hombres</a></li>
                     <li><a href="#">Mujeres</a></li>
                     <li><a href="#">Rebajas</a></li>
+                    <li><a href="product.php">Agregar producto</a></li>
                 </ul>
             </nav>
 
