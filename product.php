@@ -13,7 +13,7 @@
         $category->nombre = $_POST['category'];
 
         if($category->create()){
-            echo '<div style="color: green">Categoría creada exitosamente</div>';
+            header('Location: index.php?mensaje=creado');
         } else {
             echo '<div style="color: red">Error al crear categoría</div>';
         }

@@ -16,9 +16,12 @@
 
 
     <main>
-        <?php foreach($list_category as $category): ?>
+        <?php foreach($list_category as $cat): ?>
     
-            <h3> <?php echo($category['nombre']); ?> </h3>
+            <div style="display: flex; gap: 5px;"> 
+                <p> <?php echo($cat['nombre']); ?> </p>
+                <a href="actions/delete_category.php?id=<?php echo $cat['id'] ?>">Delete</a>
+            </div>
             
         <?php endforeach; ?>
     </main>
