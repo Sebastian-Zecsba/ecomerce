@@ -19,6 +19,7 @@
                     <li><a href="#">Mujeres</a></li>
                     <li><a href="#">Rebajas</a></li>
                     <li><a href="product.php">Agregar producto</a></li>
+                    <li><a href="category.php">Agregar Categoria</a></li>
                 </ul>
             </nav>
 

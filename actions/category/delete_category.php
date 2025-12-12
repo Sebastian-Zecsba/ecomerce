@@ -1,7 +1,7 @@
 <?php 
 
-    require_once "../classes/database.php";
-    require_once "../classes/Category.php";
+    require_once "../../classes/database.php";
+    require_once "../../classes/Category.php";
 
     if(isset($_GET['id'])){
         $database = new Database();
@@ -11,7 +11,7 @@
         $id_a_borrar = $_GET['id'];
 
         if($category->delete($id_a_borrar)){
-            header('Location: ../index.php?mensaje=borrado');
+            header('Location: ../../index.php?mensaje=borrado');
         }else{ 
             echo 'No se pudo borrar';
         }

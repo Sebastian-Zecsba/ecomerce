@@ -1,41 +1,53 @@
 <?php 
     include 'includes/header.php';
 
-    require_once 'classes/database.php';
-    require_once 'classes/Category.php';
+    require 'classes/Category.php';
+    require 'classes/database.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $category = new Category($db);
-
-    if($_POST){
-        $category->nombre = $_POST['category'];
-
-        if($category->create()){
-            header('Location: index.php?mensaje=creado');
-        } else {
-            echo '<div style="color: red">Error al crear categoría</div>';
-        }
-
-    }
-
+    $categoryModel = new Category($db); 
+    $stmt = $categoryModel->read();    
+    $categories = $stmt->fetchAll();
 ?>
 
-    <section>
+        <section>
+            <form action="" method="POST" enctype="multipart/form-data">
+                    <div>
+                        <label for="nombre">Nombre: </label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre producto">
+                    </div>
+                    <div>
+                        <label for="descripcion">Descripción: </label>
+                        <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion producto">
+                    </div>
+                    <div>
+                        <label for="precio">Precio: </label>
+                        <input type="number" name="precio" id="precio">
+                    </div>
+                    <div>
+                        <label for="stock">Cantidad: </label>
+                        <input type="text" name="stock" id="stock">
+                    </div>
+                    <div>
+                        <label for="categoria">Categoría: </label>
+                        <select name="category_id" id="categoria">
+                            <option value="">-- Categoria --</option>
 
-        <form action="" method="POST">
-            <div>
-                <label for="category">Nombre de la categoria: </label>
-                <input type="text" name="category" id="category" placeholder="Ej: Deportivos">
-            </div>
-            <button type="submit">Guardar</button>
-        </form>
+                            <?php foreach ($categories as $category): ?>
 
-    </section>
+                                <option value="<?= $category['id'] ?>"> <?php echo $category['nombre'] ?> </option>
 
+                            <?php endforeach ?>
 
+                        </select>
+                    </div>
 
-<?php 
-    include 'includes/footer.php';
-?>
+                    <button type="submit">Guardar</button>
+            </form>
+        </section>
+
+ <?php 
+    include 'includes/footer.php'
+ ?>
