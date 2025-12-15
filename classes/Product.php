@@ -26,7 +26,7 @@
                            descripcion = :descripcion,
                            precio = :precio,
                            stock = :stock,
-                           image = :imagen,
+                           imagen = :imagen,
                            created_at = :created;";
 
             $stmt = $this->conn->prepare($query);
@@ -37,7 +37,8 @@
             $stmt->bindParam(":descripcion", $this->descripcion);
             $stmt->bindParam(":precio", $this->precio);
             $stmt->bindParam(":stock", $this->stock);
-            $stmt->bindParam(":created_at", $this->created_at);
+            $stmt->bindParam(":imagen",       $this->imagen);
+            $stmt->bindParam(":created", $this->created_at);
 
             if($stmt->execute()){
                 return true;

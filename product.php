@@ -13,7 +13,7 @@
 ?>
 
         <section>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="actions/product/create.php" method="POST" enctype="multipart/form-data">
                     <div>
                         <label for="nombre">Nombre: </label>
                         <input type="text" name="nombre" id="nombre" placeholder="Nombre producto">
@@ -31,8 +31,8 @@
                         <input type="text" name="stock" id="stock">
                     </div>
                     <div>
-                        <label for="categoria">Categoría: </label>
-                        <select name="category_id" id="categoria">
+                        <label for="categoria_id">Categoría: </label>
+                        <select name="categoria_id" id="categoria_id">
                             <option value="">-- Categoria --</option>
 
                             <?php foreach ($categories as $category): ?>
@@ -42,6 +42,10 @@
                             <?php endforeach ?>
 
                         </select>
+                    </div>
+                    <div>
+                        <label for="imagen">Agrega una imagen del producto</label>
+                        <input type="file" name="imagen" id="imagen">
                     </div>
 
                     <button type="submit">Guardar</button>
