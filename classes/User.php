@@ -16,9 +16,9 @@
         }
 
         public function login($email, $password){
-            $query = "SELECT id, nombre, password, rol FROM ".$this->table_name. "WHERE email = :email LIMIT 1";
+            $query = "SELECT id, nombre, password, rol FROM ".$this->table_name." WHERE email = :email LIMIT 1";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam("email:", $email);
+            $stmt->bindParam(":email", $email);
             $stmt->execute();
 
             if($stmt->rowCount() > 0){
@@ -36,12 +36,7 @@
         }
 
         public function create(){
-            $query = "INSET INTO ".$this->table_name. " 
-                        SET 
-                           nombre = :nombre,
-                           email = :email,
-                           password = :password,
-                           rol = 'usuarios' ";
+            $query = "INSERT INTO ".$this->table_name." SET nombre = :nombre, email = :email, password = :password, rol = 'usuarios' ";
             $stmt = $this->conn->prepare($query);
 
 

@@ -14,7 +14,7 @@
 
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="index.php">Inicio</a></li> 
                     <li><a href="#">Hombres</a></li>
                     <li><a href="#">Mujeres</a></li>
                     <li><a href="#">Rebajas</a></li>
