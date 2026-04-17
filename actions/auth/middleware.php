@@ -6,7 +6,7 @@
 
     function requireLogin(){
         if(!isset($_SESSION['user_id'])){
-            header("Location: ../../login.php");
+            header("Location: /ecomerce/login.php");
             exit;
         }
     }
@@ -16,7 +16,7 @@
         requireLogin();
 
         if(!isset($_SESSION['user_rol']) || $_SESSION['user_rol'] !== 'admin'){
-            header("Location: /ecomerce/login.php");
+            header("Location: /ecomerce/noAuthorize.php");
             exit;
         }
 
