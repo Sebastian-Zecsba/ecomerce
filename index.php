@@ -1,4 +1,7 @@
 <?php 
+
+    require_once 'actions/auth/middleware.php';
+
     include 'includes/header.php';
 
     require_once 'classes/Product.php';
@@ -13,11 +16,17 @@
 
 ?>
 
-    <main>
+<main class="products-grid">
         <?php foreach($products as $product): ?>
-                <p> <?php echo $product['nombre'] ?> </p>
-                <img src="<?php echo $product['imagen'] ?>" alt="">
-        <?php endforeach?>
+            <div class="product-card">
+                <img src="<?= htmlspecialchars($product['imagen']) ?>" alt="<?= htmlspecialchars($product['nombre']) ?>">
+                
+                <div class="product-info">
+                    <h3><?= htmlspecialchars($product['nombre']) ?></h3>
+                    <button class="btn-add">Ver producto</button>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </main>
 
 

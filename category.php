@@ -1,4 +1,7 @@
 <?php 
+
+    require 'actions/auth/middleware.php';
+
     include 'includes/header.php';
 
     require_once 'classes/database.php';

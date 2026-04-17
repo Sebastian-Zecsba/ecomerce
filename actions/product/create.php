@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+    require '../auth/middleware.php';
+    requireAdmin();
+
     require_once '../../classes/database.php';
     require_once '../../classes/Product.php';
 
