@@ -185,3 +185,135 @@ ul { list-style: none; }
 .btn-add:hover {
     background-color: #444444;
 }
+
+.product-text {
+    padding: 2px;
+    font-weight: 500;
+}
+
+/* =========================================
+   DISEÑO DE DETALLE DE PRODUCTO
+   ========================================= */
+
+/* Contenedor principal para dar aire arriba y abajo */
+.product-detail-section {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    padding: 0 20px;
+}
+
+/* La tarjeta gigante que envuelve todo */
+.product-detail-layout {
+    display: flex;
+    flex-wrap: wrap; /* Permite que se colapse en celulares */
+    gap: 50px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Sombra elegante */
+}
+
+/* --- LADO IZQUIERDO: IMAGEN --- */
+.product-detail-image {
+    flex: 1 1 400px; /* Crece y se encoge, tamaño base 400px */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.product-detail-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- LADO DERECHO: INFO --- */
+.product-detail-info {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 2.8rem;
+    color: #222;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+/* Precio con el naranja que ya traías en el header */
+.product-price {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #ff9800; 
+    margin-bottom: 30px;
+}
+
+.product-description {
+    margin-bottom: 25px;
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.product-description h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.product-meta {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.in-stock { color: #28a745; font-weight: bold; }
+.out-of-stock { color: #dc3545; font-weight: bold; }
+
+/* --- BOTÓN DE COMPRA --- */
+.add-to-cart-form {
+    margin-top: auto; /* Empuja el botón hacia abajo si hay mucho espacio libre */
+}
+
+.btn-add-cart {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-add-cart:hover:not(:disabled) {
+    background-color: #ff9800; /* Al pasar el mouse se pone naranja */
+    transform: translateY(-2px); /* Se levanta un poquito */
+}
+
+.btn-add-cart:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- MAGIA RESPONSIVA (CELULARES) --- */
+@media (max-width: 768px) {
+    .product-detail-layout {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+    
+    .product-title { font-size: 2.2rem; }
+    .product-price { font-size: 1.8rem; }
+}

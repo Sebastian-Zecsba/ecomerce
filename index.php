@@ -19,11 +19,13 @@
 <main class="products-grid">
         <?php foreach($products as $product): ?>
             <div class="product-card">
-                <img src="<?= htmlspecialchars($product['imagen']) ?>" alt="<?= htmlspecialchars($product['nombre']) ?>">
+                <img src="<?= $product['imagen'] ?>" alt="<?= $product['nombre'] ?>">
                 
                 <div class="product-info">
-                    <h3><?= htmlspecialchars($product['nombre']) ?></h3>
-                    <button class="btn-add">Ver producto</button>
+                    <h3 class="product-info-title"><?= $product['nombre'] ?></h3>
+                    <p class="product-info-stock product-text">Disponibles: <?= $product['stock']  ?></p>
+                    <p class="product-info-price product-text">Precio: <?= $product['precio']  ?></p>
+                    <a href="productId.php?id=<?= $product['id'] ?>" class="btn-add">Ver producto</a>
                 </div>
             </div>
         <?php endforeach; ?>
