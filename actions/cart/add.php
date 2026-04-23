@@ -10,7 +10,7 @@
     $db = $database->getConnection();
     $cart = new ShoppingCar($db);
 
-    $cart->getCartId($_SESSION['user_id']);
+    $cart->addItem($_POST['producto_id'], 1, $_SESSION['user_id']);
 
-
+    header("Location: ../../index.php");
 ?>
