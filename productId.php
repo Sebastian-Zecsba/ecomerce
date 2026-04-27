@@ -43,6 +43,16 @@
 
             <form action="actions/cart/add.php" method="POST" class="add-to-cart-form">
                 <input type="hidden" name="producto_id" value="<?= $product['id'] ?>">
+                
+                <div class="quantity-wrapper">
+                    <label for="cantidad">Cantidad:</label>
+                    <div class="quantity-controls">
+                        <button type="button" class="btn-qty btn-minus">-</button>
+                        <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="<?= $product['stock'] ?>" readonly>
+                        <button type="button" class="btn-qty btn-plus">+</button>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn-add-cart" <?= $product['stock'] <= 0 ? 'disabled' : '' ?>>
                     🛒 Añadir al carrito
                 </button>
@@ -51,3 +61,31 @@
 
     </div>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btnMinus = document.querySelector('.btn-minus');
+        const btnPlus = document.querySelector('.btn-plus');
+        const inputQty = document.querySelector('#cantidad');
+        
+        const maxStock = parseInt(inputQty.getAttribute('max'));
+
+
+        btnMinus.addEventListener('click', function() {
+            let currentValue = parseInt(inputQty.value);
+            if (currentValue > 1) { 
+                inputQty.value = currentValue - 1;
+            }
+        });
+
+
+        btnPlus.addEventListener('click', function() {
+            let currentValue = parseInt(inputQty.value);
+            if (currentValue < maxStock) { 
+                inputQty.value = currentValue + 1;
+            } else {
+                alert("Has alcanzado el límite de stock para este producto.");
+            }
+        });
+    });
+</script>
