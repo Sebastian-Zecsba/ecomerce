@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
     require_once '../auth/middleware.php';
     requireLogin();
@@ -8,9 +8,14 @@
 
     $database = new Database();
     $db = $database->getConnection();
-    $cart = new ShoppingCar($db);
+    $deleteProduct = new ShoppingCar($db);
 
-    $cart->addItem($_POST['producto_id'], $_POST['cantidad'], $_SESSION['user_id']);
 
-    header("Location: ../../productId.php?id=".$_POST['producto_id']);
+    $deleteProduct->deleteProductCart($_SESSION['user_id'], $_POST['producto_id']);
+
+    header("Location: ../../carrito.php");
+
+
+
+
 ?>

@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
     session_start();
 
@@ -21,7 +21,7 @@
 
             header("Location: ../../index.php");
         }else{
-            header("Locaiton: ../../login.php?msg=error");
+            header("Location: ../../login.php?msg=error");
         }
     }else {
         header("Location: ../../login.php");

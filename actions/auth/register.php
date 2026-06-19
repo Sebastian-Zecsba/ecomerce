@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
     require_once '../../classes/database.php';
     require_once '../../classes/User.php';
@@ -16,8 +16,9 @@
         if($user->create()){
             header('Location: ../../login.php?msg=registrado');
         }else{
-            header("Locaiton: ../../loging.php?msg=error");
+            header("Location: ../../loging.php?msg=error");
         }
+
         
     } else {
         header("Location: ../../registro.php");

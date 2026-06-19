@@ -1,5 +1,6 @@
 <?php
-    require 'actions/auth/middleware.php';
+
+    require_once 'actions/auth/middleware.php';
     requireLogin();
     
     include 'includes/header.php';
@@ -26,32 +27,42 @@
         </div>
     <?php else: ?>
         <div class="cart-layout">
-            <!-- Lista de productos -->
             <div class="cart-items-container">
                 <?php foreach($itemsCart as $itemCart): 
                     $subtotalItem = $itemCart['precio'] * $itemCart['cantidad'];
                 ?> 
                     <div class="cart-item">
                         <div class="cart-item-image">
-                            <img src="<?= htmlspecialchars($itemCart['imagen']) ?>" alt="<?= htmlspecialchars($itemCart['producto_nombre']) ?>" />
+                            <img src="<?= $itemCart['imagen'] ?>" alt="<?= $itemCart['producto_nombre'] ?>" />
                         </div>
                         <div class="cart-item-details">
-                            <h3 class="cart-item-title"><?= htmlspecialchars($itemCart['producto_nombre']) ?></h3>
-                            <p class="cart-item-category"><?= htmlspecialchars($itemCart['categoria_nombre']) ?></p>
+                            <h3 class="cart-item-title"><?= $itemCart['producto_nombre'] ?></h3>
+                            <p class="cart-item-category"><?= $itemCart['categoria_nombre'] ?></p>
                             <div class="cart-item-price-qty">
                                 <span class="cart-item-price">$<?= number_format($itemCart['precio'], 2) ?></span>
                                 <span class="cart-item-qty">Cant: <?= $itemCart['cantidad'] ?></span>
+
+                                <form action="actions/cart/delete.php" method="POST">
+                                    <input type="hidden" name="producto_id" value="<?= $itemCart['producto_id'] ?>">
+                                    
+                                    <button type="submit" class="btn-delete-cart">
+                                        <span class="material-symbols-outlined button-delete">
+                                            delete
+                                        </span>
+                                    </button>   
+                                </form>
+
                             </div>
                         </div>
                         <div class="cart-item-subtotal">
                             <span class="subtotal-label">Subtotal</span>
                             <span class="subtotal-value">$<?= number_format($subtotalItem, 2) ?></span>
+                            <i class="fa-solid fa-trash"></i>
                         </div>
                     </div>
                 <?php endforeach;?>
             </div>
-
-            <!-- Resumen del pedido -->
+            
             <div class="cart-summary">
                 <h3>Resumen de la orden</h3>
                 <div class="summary-row">

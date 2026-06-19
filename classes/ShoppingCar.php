@@ -89,6 +89,32 @@
             $stmt->execute();
             return $stmt->fetchColumn();
         }
+
+        public function countAmount($user_id){
+            $carrito_id = $this->getCartId($user_id);
+
+            $query = "SELECT SUM(cantidad) FROM ".$this->table_items." WHERE carrito_id = :carritoId";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":carritoId", $carrito_id);
+            $stmt->execute();
+            return $stmt->fetchColumn();
+        }
+
+        public function deleteProductCart($user_id, $producto_id){
+            $carrito_id = $this->getCartId($user_id);
+
+            $query = "DELETE FROM ".$this->table_items. " WHERE carrito_id = :carritoId AND producto_id = :productoId";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":carritoId", $carrito_id);
+            $stmt->bindParam(":productoId", $producto_id);
+
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+            
+        }
+
     }
 
 ?>

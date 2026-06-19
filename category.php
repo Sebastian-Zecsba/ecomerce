@@ -1,6 +1,6 @@
 <?php 
 
-    require 'actions/auth/middleware.php';
+    require_once 'actions/auth/middleware.php';
 
     include 'includes/header.php';
 

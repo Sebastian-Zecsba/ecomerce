@@ -1,16 +1,18 @@
 <?php 
+    require_once 'actions/auth/middleware.php';
     
     include 'includes/header.php';
 
     require_once 'classes/Product.php';
     require_once 'classes/database.php';
+    require_once 'classes/ShoppingCar.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
     $productModel = new Product($db);
     $stmt = $productModel->readById($_GET['id']);
-    $product = $stmt
+    $product = $stmt;
 
 ?>
 
@@ -54,7 +56,7 @@
                 </div>
 
                 <button type="submit" class="btn-add-cart" <?= $product['stock'] <= 0 ? 'disabled' : '' ?>>
-                    🛒 Añadir al carrito
+                    Añadir al carrito
                 </button>
             </form>
         </div>

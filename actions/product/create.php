@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 
-    require '../auth/middleware.php';
+    require_once '../auth/middleware.php';
     requireAdmin();
 
     require_once '../../classes/database.php';
@@ -42,7 +42,7 @@
         }
 
         if ($product->create()) {
-            // Redirigir al usuario al listado con mensaje de éxito
+            // Redirigir al usuario al listado con mensaje de exito
             header("Location: ../../index.php?msg=creado");
         } else {
             echo "Hubo un error guardando en la Base de Datos.";

@@ -1,12 +1,12 @@
 <?php 
 
-    require 'actions/auth/middleware.php';
+    require_once 'actions/auth/middleware.php';
     requireAdmin();
 
     include 'includes/header.php';
 
-    require 'classes/Category.php';
-    require 'classes/database.php';
+    require_once 'classes/Category.php';
+    require_once 'classes/database.php';
 
     $database = new Database();
     $db = $database->getConnection();
